@@ -1,11 +1,13 @@
 
 import {createRouter, createWebHashHistory} from 'vue-router'
-
+import Main from '../views/Main.vue'
+import Notfound from '../views/404.vue'
+import Login from "@/views/Login.vue"
 const routes = [
     {
         path: '/',
         name: 'main',
-        component: () => import('../views/Main.vue'),
+        component: Main,
         redirect: "/home",
         children: [
             {
@@ -143,6 +145,16 @@ const routes = [
             // },
         ]
     },
+    {
+        path: "/login",
+        name: "login",
+        component: Login,
+    },
+    {
+        path: "/:pathMatch(.*)*",
+        name:  'notfound',
+        component: Notfound
+    }
 ]
 
 const router = createRouter({

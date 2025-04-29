@@ -1,8 +1,16 @@
 <template>
-    <div>home</div>
+    <div>
+        home
+    </div>
+    
 </template>
 
-<script>
+<script setup>
+    import { useTestStore } from "@/store";
+
+    const Test = useTestStore();
+
+
 </script>
 
 <style>

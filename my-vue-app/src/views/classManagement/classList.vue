@@ -90,7 +90,7 @@
     classNumber: 28,
   },
   ])
-  const isEditVisible = ref(false)
+  let isEditVisible = ref(false)
   const editClass = (classItem) => {
     isEditVisible.value = true
   }

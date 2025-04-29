@@ -1,11 +1,12 @@
 <script setup>
   import AppHeader from "@/components/AppHeader.vue"
   import AppNavbar from "@/components/AppNavbar.vue"
-
+  
 </script>
 
 <template>
   <div>
+    
       <div class="header">
         <app-header></app-header>
       </div>

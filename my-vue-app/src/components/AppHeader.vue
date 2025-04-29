@@ -1,18 +1,37 @@
+<script setup>
+import { inject } from 'vue';
+
+// 获取 showDialog 方法
+const showDialog = inject('showDialog');
+
+function logout() {
+  showDialog('是否要退出登录', '确认后将退出当前账号')
+    .then(() => {
+      console.log('确认退出登录');
+      // 执行退出登录的逻辑
+    })
+    .catch(() => {
+      console.log('取消退出登录');
+    });
+}
+</script>
+
 <template>
-    <div class="header">
-        <div class="bread">
-            <div class="title">教务系统</div>
-            <div class="item">
-                <a href="#">首页</a>
-                <a href="#">用户管理</a>
-            </div>
-        </div>
+  <div class="header">
+    <div class="bread">
+      <div class="title">教务系统</div>
+      <div class="item">
+        <a href="#">首页</a>
+        <a href="#">用户管理</a>
+      </div>
     </div>
-  </template>
-  <script setup>
-  
-  </script>
-  
+    <div class="info">
+      <div>
+        <button @click="logout">退出登录</button>
+      </div>
+    </div>
+  </div>
+</template>
   
   
   <style scoped>
