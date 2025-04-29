@@ -176,4 +176,7 @@ const toggleContent = (item) => {
   color: #007bff;
   text-decoration: underline;
 }
+.item-menu{
+  text-align: center;
+}
 </style>

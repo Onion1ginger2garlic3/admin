@@ -32,20 +32,22 @@ defineProps({
     required: true,
   },
 });
-
-const emit = defineEmits(['update:visible', 'confirm', 'cancel']);
-
-function confirm() {
-  emit('confirm'); // 触发确认事件
-  document.dispatchEvent(new Event('confirm')); // 触发全局事件
-  emit('update:visible', false); // 关闭弹窗
-}
-
-function cancel() {
-  emit('cancel'); // 触发取消事件
-  document.dispatchEvent(new Event('cancel')); // 触发全局事件
-  emit('update:visible', false); // 关闭弹窗
-}
+  // 定义 emits
+  const emit = defineEmits(['update:visible', 'confirm', 'cancel']);
+  
+  // 确认按钮点击事件
+  function confirm() {
+    emit('confirm'); // 触发确认事件
+    document.dispatchEvent(new Event('confirm')); // 触发全局事件
+    emit('update:visible', false); // 关闭弹窗
+  }
+  
+  // 取消按钮点击事件
+  function cancel() {
+    emit('cancel'); // 触发取消事件
+    document.dispatchEvent(new Event('cancel')); // 触发全局事件
+    emit('update:visible', false); // 关闭弹窗
+  }
 </script>
 
   
@@ -87,12 +89,12 @@ function cancel() {
   justify-content: flex-end;
   gap: 10px;
 }
-
 .confirm-btn {
-  background-color: #4caf50;
+  background-color: #81c683;
   color: white;
   border: none;
-  padding: 8px 16px;
+  padding: 6px 12px; /* 调小按钮的内边距 */
+  font-size: 14px; /* 调小字体大小 */
   border-radius: 4px;
   cursor: pointer;
 }
@@ -102,10 +104,11 @@ function cancel() {
 }
 
 .cancel-btn {
-  background-color: #f44336;
+  background-color: #d77e77;
   color: white;
   border: none;
-  padding: 8px 16px;
+  padding: 6px 12px; /* 调小按钮的内边距 */
+  font-size: 14px; /* 调小字体大小 */
   border-radius: 4px;
   cursor: pointer;
 }

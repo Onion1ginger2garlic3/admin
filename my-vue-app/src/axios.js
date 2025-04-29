@@ -1,5 +1,7 @@
 import axios from 'axios'
 import { getToken, setToken, removeToken } from './composables/auth';
+import {Msg} from "@/utils/msg"
+import {useTestStore} from '@/store';
 
 const service = axios.create({
     baseURL: "http://"
@@ -30,6 +32,13 @@ service.interceptors.response.use(function (response) {
   }, function (error) {
     // 超出 2xx 范围的状态码都会触发该函数。
     // 对响应错误做点什么
+    const msg = error.response.msg || '请求失败'
+    if(msg === "非法token，请先登录！"){
+      const store = useTestStore()
+      store.logoutApi().finally(()=>location.reload())
+
+    }
+    Msg(msg,"error")
     return Promise.reject(error);
   });
 

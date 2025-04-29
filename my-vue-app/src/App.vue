@@ -1,34 +1,33 @@
 <script setup>
-    import {popupMessage, popupType, isPopupVisible} from '@/utils/msg'
-    import Popup from '@/components/ofenComponents/popup.vue'
-    import { DialogMessage,DialogTitle,isDialogVisible,showDialog } from '@/utils/ShowDialog';
-    import popupDialog from '@/components/ofenComponents/popupDialog.vue';
+import { provide } from 'vue';
+import popupDialog from '@/components/ofenComponents/popupDialog.vue';
+import { DialogMessage, DialogTitle, isDialogVisible, showDialog } from '@/utils/ShowDialog';
+import popup from '@/components/ofenComponents/popup.vue';
+import { popupMessage, popupType, isPopupVisible} from '@/utils/msg';
 
-    provide('showDialog', showDialog);
+// 提供 showDialog 方法
+provide('showDialog', showDialog);
 </script>
 
 <template>
-    <!-- 弹窗组件 -->
-    <Popup 
-        v-model:visible="isPopupVisible"
-        :message="popupMessage"
-        :type="popupType"
-    />
-    <popupDialog
-        v-model:visible="isDialogVisible"
-        :message="DialogMessage"
-        :title="DialogTitle"
-    />
-    
-    <router-view/>
-    
+  <popup
+    v-model:visible="isPopupVisible"
+    :message="popupMessage"
+    :type="popupType"
+  />
+  <!-- 全局弹窗组件 -->
+  <popupDialog
+    v-model:visible="isDialogVisible"
+    :message="DialogMessage"
+    :title="DialogTitle"
+  />
+  <router-view />
 </template>
 
-
 <style scoped>
-#app{
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+#app {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 </style>

@@ -1,12 +1,14 @@
 import {defineStore} from "pinia"
-import {getinfo,loginApi} from '@/api/manager';
-import { setToken } from '@/composables/auth';
+import {getinfo,loginApi,logoutApi} from '@/api/manager';
+import { setToken, removeToken } from '@/composables/auth';
 
 export const useTestStore = defineStore('Test', {
     state(){
         return {
             //用户信息
-            user: {},
+            user: {
+              username: "韩信与"
+            },
             studentList: [],
             teacherList: [],
             classList: [],
@@ -39,6 +41,17 @@ export const useTestStore = defineStore('Test', {
             throw error; // 抛出错误供调用方捕获
           }
         },
+        async logoutApi() {
+          try{
+            const res = await logoutApi();
+            removeToken()
+            this.setuser({})
+            }catch (error) {
+              console.error('删除用户信息失败:', error);
+              throw error; // 抛出错误供调用方捕获
+          }
+      },
+
         setuser(value) {
           this.user = value;
         },

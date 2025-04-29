@@ -13,3 +13,6 @@ export function logoutApi(){
 export function getinfo(){
     return axios.get("")
 }
+export function updatepassword(data){
+    return axios.get("",data)
+}
